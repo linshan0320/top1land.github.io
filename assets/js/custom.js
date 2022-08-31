@@ -153,6 +153,9 @@ $(document).ready(function($) {
         $('#gform').hide();
         $("div.status").append(response);
         form.addClass("submitted");
+        setTimeout(function () {
+            location.reload(true);
+        }, 5000);
     });
 
     $("[data-background-color-custom]").each(function() {
