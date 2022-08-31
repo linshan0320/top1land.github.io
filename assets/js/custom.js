@@ -148,10 +148,10 @@ $(document).ready(function($) {
     });
 
     $("#gform").on('submit', function (e) {
-        //Things to do after submitting
         var response = "We will contact you as soon as possible.  Thank you for your inquiry.";
+        $('#subConf').show();
+        $('#gform').hide();
         $("div.status").append(response);
-        alert(response);
         form.addClass("submitted");
     });
 
