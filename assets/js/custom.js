@@ -122,21 +122,37 @@ $(document).ready(function($) {
 
 //  Form Validation
 
-    $("form .btn[type='submit']").on("click", function(){
-        var button = $(this);
-        var form = $(this).closest("form");
+    // -Replaced with new submit override
+    //$("form .btn[type='submit']").on("click", function(){
+    //    var button = $(this);
+    //    var form = $(this).closest("form");
+    //    button.prepend("<div class='status'></div>");
+    //    form.validate({
+    //        submitHandler: function() {
+    //            $.post("assets/php/email.php", form.serialize(),  function(response) {
+    //                //console.log(response);
+    //                //$('#form-subscribe .form-contact-status').html(response);
+    //                button.find(".status").append(response);
+    //                form.addClass("submitted");
+    //            });
+    //            return false;
+    //        }
+    //    });
+    //});
+
+    var button = $(this);
+    var form = $(this).closest("form");
+    $("form .btn[type='submit']").on("click", function () {
         button.prepend("<div class='status'></div>");
-        form.validate({
-            submitHandler: function() {
-                $.post("assets/php/email.php", form.serialize(),  function(response) {
-                    //console.log(response);
-                    //$('#form-subscribe .form-contact-status').html(response);
-                    button.find(".status").append(response);
-                    form.addClass("submitted");
-                });
-                return false;
-            }
-        });
+        form.submit();
+    });
+
+    $("#gform").on('submit', function (e) {
+        //Things to do after submitting
+        var response = "We will contact you as soon as possible.  Thank you for your inquiry.";
+        $("div.status").append(response);
+        alert(response);
+        form.addClass("submitted");
     });
 
     $("[data-background-color-custom]").each(function() {
